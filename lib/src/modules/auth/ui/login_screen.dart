@@ -1,7 +1,3 @@
-import 'package:demo_app/src/di/container.dart';
-import 'package:demo_app/src/modules/auth/service/auth_service.dart';
-import 'package:demo_app/src/modules/auth/service/repository/auth_repository.dart';
-import 'package:demo_app/src/modules/auth/ui/login_view_model.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,18 +8,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late LoginViewModel _viewModel;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _viewModel = LoginViewModel(
-      context,
-      AuthService(
-        AuthRepository(),
-        Di.instance.profileRepository,
-      ),
-    );
   }
 
   @override
@@ -36,11 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                'Добро пожаловать!',
-                style: Theme.of(context).textTheme.headline5,
-              ),
-              const SizedBox(height: 100),
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
@@ -59,21 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     )
                   ],
                 ),
-                child: Column(
-                  children: [
-                    _RegistrationForm(
-                      formKey: _viewModel.formKey,
-                      emailController: _viewModel.email,
-                      nameController: _viewModel.name,
-                      lastNameController: _viewModel.lastName,
-                    ),
-                    const SizedBox(height: 32),
-                    ElevatedButton(
-                      onPressed: _viewModel.register,
-                      child: const Text('Войти'),
-                    ),
-                  ],
-                ),
+                //TODO: child
               ),
             ],
           ),

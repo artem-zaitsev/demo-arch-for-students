@@ -10,8 +10,8 @@ class OrderViewModel with ChangeNotifier {
 
   States state = States.loading;
 
-  final ShowroomService _showroomService;
-  final ProfileRepository _profileRepository;
+  late final ShowroomService _showroomService; //TODO: убрать late
+  late final ProfileRepository _profileRepository;
 
   final nameController = TextEditingController();
   final lastNameController = TextEditingController();
@@ -22,8 +22,8 @@ class OrderViewModel with ChangeNotifier {
 
   OrderViewModel(
     this.context,
-    this._showroomService,
-    this._profileRepository,
+    // this._showroomService,
+    // this._profileRepository,
   ) {
     item = ModalRoute.of(context)?.settings.arguments as Item;
     load();
@@ -49,8 +49,8 @@ class OrderViewModel with ChangeNotifier {
     }
   }
 
-  void orderItem() {
-    _showroomService.order(item);
+  void orderItem() async {
+    await _showroomService.order(item);
     Navigator.of(context).maybePop();
   }
 }

@@ -21,7 +21,6 @@ class _ShowroomScreenState extends State<ShowroomScreen> {
     super.didChangeDependencies();
     _viewModel = ShowroomViewModel(
       context,
-      Di.instance.showroomService,
     );
 
     _viewModel.addListener(_rebuild);

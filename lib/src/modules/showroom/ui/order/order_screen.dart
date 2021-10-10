@@ -21,8 +21,6 @@ class _OrderScreenState extends State<OrderScreen> {
     super.didChangeDependencies();
     _viewModel = OrderViewModel(
       context,
-      Di.instance.showroomService,
-      Di.instance.profileRepository,
     );
 
     _viewModel.addListener(_rebuild);

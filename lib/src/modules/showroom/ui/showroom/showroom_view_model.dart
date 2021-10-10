@@ -10,13 +10,15 @@ class ShowroomViewModel with ChangeNotifier {
   late final Iterable<Item> items;
   States state = States.loading;
 
-  final ShowroomService _showroomService;
+  late final ShowroomService _showroomService; //убрать late
 
-  ShowroomViewModel(this.context, this._showroomService) {
+  ShowroomViewModel(
+    this.context,
+  ) {
     load();
   }
 
-  void load() async  {
+  void load() async {
     state = States.loading;
     notifyListeners();
 
