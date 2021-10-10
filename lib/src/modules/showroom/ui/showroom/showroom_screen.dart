@@ -33,34 +33,7 @@ class _ShowroomScreenState extends State<ShowroomScreen> {
       appBar: AppBar(
         title: const Text('Our Items'),
       ),
-      body: Stack(
-        children: [
-          if (_viewModel.state == States.content)
-            ListView.builder(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8,
-              ),
-              itemCount: _viewModel.items.length,
-              itemBuilder: (ctx, idx) {
-                final item = _viewModel.items.toList()[idx];
-
-                return ItemCard(
-                  item: item,
-                  onTap: _viewModel.orderItem,
-                );
-              },
-            ),
-          if (_viewModel.state == States.loading)
-            Expanded(
-              child: Container(
-                color: Colors.white,
-                child: const Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
-            ),
-        ],
-      ),
+      body: Placeholder(),
     );
   }
 
