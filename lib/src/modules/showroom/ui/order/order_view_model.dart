@@ -11,7 +11,7 @@ class OrderViewModel with ChangeNotifier {
   States state = States.loading;
 
   final ShowroomService _showroomService;
-  final ProfileRepository _profileRepository;
+  // final ProfileRepository _profileRepository;
 
   final nameController = TextEditingController();
   final lastNameController = TextEditingController();
@@ -23,7 +23,7 @@ class OrderViewModel with ChangeNotifier {
   OrderViewModel(
     this.context,
     this._showroomService,
-    this._profileRepository,
+    // this._profileRepository,
   ) {
     item = ModalRoute.of(context)?.settings.arguments as Item;
     load();
@@ -33,20 +33,7 @@ class OrderViewModel with ChangeNotifier {
     state = States.loading;
     notifyListeners();
 
-    try {
-      final user = await _profileRepository.getProfile();
 
-      nameController.text = user.name;
-      lastNameController.text = user.lastName;
-      emailController.text = user.email;
-
-      state = States.content;
-      
-    } on Exception catch (_) {
-      state = States.content;
-    } finally {
-      notifyListeners();
-    }
   }
 
   void orderItem() {
